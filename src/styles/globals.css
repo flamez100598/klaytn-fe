@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #020817;
+
+    --card: #ffffff;
+    --card-foreground: #020817;
+
+    --popover: #ffffff;
+    --popover-foreground: #020817;
+
+    --primary: #0f172a;
+    --primary-foreground: #f8fafc;
+
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+
+    --accent: #f1f5f9;
+    --accent-foreground: #0f172a;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #020817;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #020817;
+    --foreground: #f8fafc;
+
+    --card: #020817;
+    --card-foreground: #f8fafc;
+
+    --popover: #020817;
+    --popover-foreground: #f8fafc;
+
+    --primary: #f8fafc;
+    --primary-foreground: #0f172a;
+
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+
+    --accent: #1e293b;
+    --accent-foreground: #f8fafc;
+
+    --destructive: #7f1d1d;
+    --destructive-foreground: #f8fafc;
+
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #cbd5e1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* styles animation for collapsible */
+.CollapsibleContentAnimation {
+  overflow: hidden;
+}
+.CollapsibleContentAnimation[data-state="open"] {
+  animation: slideDown 300ms ease-out;
+}
+.CollapsibleContentAnimation[data-state="closed"] {
+  animation: slideUp 300ms ease-out;
+}
+/* End styles animation for collapsible */
+
+/* css table */
+.ag-theme-alpine {
+  /* custom variable and check variable css in "ag-grid-community/styles/ag-theme-alpine.css" */
+
+  /* Example
+  
+  --ag-foreground-color: rgb(126, 46, 132);
+  --ag-background-color: rgb(249, 245, 227);
+  --ag-header-foreground-color: rgb(204, 245, 172);
+  --ag-header-background-color: rgb(209, 64, 129);
+  --ag-odd-row-background-color: rgb(0, 0, 0, 0.03);
+  --ag-header-column-resize-handle-color: rgb(126, 46, 132);
+  --ag-font-size: 17px;
+  --ag-font-family: monospace; 
+  ......
+  */
+
+  --ag-border-color: var(--border);
+  --ag-secondary-border-color: var(--border);
+}
+
+.ag-root-wrapper {
+  border-radius: 16px;
+}
+/* End css table */
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
