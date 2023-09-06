@@ -76,7 +76,7 @@ const LandItem = ({ src, name, position, piecesOwners, id }: any) => {
         width: piecesOwners + '%'
     }
     const router = useRouter();
-    const handleClick = (e) => {
+    const handleClick = (e: any) => {
         e.preventDefault()
         router.push('/inventory/' + id)
       }
