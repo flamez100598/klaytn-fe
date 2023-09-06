@@ -5,7 +5,7 @@ import { CommandInput, CommandEmpty, CommandGroup, CommandItem } from "cmdk";
 import { ChevronsUpDown, Command, Check } from "lucide-react";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CollectionCardStyle1, CollectionCardStyle2 } from "@/components/CollectionCard";
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 const InventoryView = () => {
     const [open, setOpen] = useState(false);
@@ -71,13 +71,20 @@ const InventoryView = () => {
 
 export default InventoryView;
 
-const LandItem = ({ src, name, position, piecesOwners }: any) => {
+const LandItem = ({ src, name, position, piecesOwners, id }: any) => {
     const widthPiece = {
         width: piecesOwners + '%'
     }
+    const router = useRouter();
+    const handleClick = (e) => {
+        e.preventDefault()
+        router.push('/inventory/' + id)
+      }
+     
+
     console.log('widthPiece :>> ', widthPiece);
     return (
-        <div className="bg-[#121418] group relative my-4 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mx-[20px]">
+        <div className="bg-[#121418] group relative my-4 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mx-[20px]" onClick={handleClick} >
             <div className="overflow-hidden h-[240px] relative">
                 <Image
                     src={src}
@@ -93,9 +100,9 @@ const LandItem = ({ src, name, position, piecesOwners }: any) => {
                 <div className="relative w-full h-full rounded-xl overflow-hidden shadow-md">
                     <Image
                         src='/images/piece.png'
-                        objectFit="cover"
+                        width={49}
+                        height={60}
                         loading="lazy"
-                        layout="fill"
                         alt="#"
                     />
                 </div>
